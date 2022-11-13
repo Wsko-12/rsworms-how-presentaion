@@ -34,6 +34,7 @@
 			<div class="slides">
                 <section>
                     <h1>RSWorms</h1>
+                    <a href="https://miro.com/app/board/uXjVOhChhKE=/" target="_blank">Miro board</a>
                 </section>
                 <section>
                   <section>
@@ -342,7 +343,176 @@
                             </li>
                         </ul>
                     </section>
+                    <section>
+                        <h2>Map generation</h2>
+                    </section>
+                    <section>
+                        <h3>Canvas</h3>
+                        <p style="text-align: left">HTML element for creating graphics with JS</p>
+                        <div class="fragment" style="text-align: left">
+                            <p>Canvas context:</p>
+                            <ul>
+                                <li>2d</li>
+                                <li>webgl</li>
+                                <li>webgl2</li>
+                                <li>bitmaprenderer</li>
+                            </ul>
+                        </div>
+                    </section>
+                    <section>
+                        <h4>Canvas size</h4>
+                        <div style="display: flex;">
+                            <div style="width: 50%; font-size: 0.9rem;">
+                                <figure>
+                                    <img style="width: 50%;" src="./images/rsworms/map-generation/canvas-size/ghost-16.png" alt="">
+                                    <figcaption> 16x16</figcaption>
+                                </figure>
+                                <pre style="font-size: 0.8rem;" data-trim data-noescape>
+                                    <code>
+<canvas width="16" height="16"></canvas>
+                                    </code>
+                                </pre>
+                                <pre style="font-size: 0.8rem;" data-trim data-noescape>
+                                    <code>
+canvas.width = 16;
+canvas.height = 16;
+                                    </code>
+                                </pre>
+                            </div>
+                            <div style="width: 50%; font-size: 1rem;">
+                                <figure>
+                                    <img style="width: 50%;" src="./images/rsworms/map-generation/canvas-size/ghost-big.png" alt="">
+                                    <figcaption> 256x256</figcaption>
+                                </figure>
+                                <pre style="font-size: 0.8rem;" data-trim data-noescape>
+                                    <code>
+<canvas style="width: 256px; height: 256px;"></canvas>
+                                    </code>
+                                </pre>
+                                <pre style="font-size: 0.8rem;" data-trim data-noescape>
+                                    <code>
+canvas.style.width = 16;
+canvas.style.height = 16;
+                                    </code>
+                                </pre>
+                            </div>
+
+                        </div>
+
+                    </section>
+                    <section>
+                        <h4>Draw Rectangle</h4>
+                        <img src="./images/canvas/fillRect.png">
+                        <pre style="font-size: 1.5rem;">
+                            <code>
+ctx.fillRect(x, y, width, height)
+                            </code>
+                        </pre>
+                    </section>
+                    <section>
+                        <h4>Noise</h4>
+                        <div style="display: flex;">
+                            <figure>
+                                <img src="./images/rsworms/map-generation/noise/white.png" alt="">
+                                <figcaption>White noise</figcaption>
+                            </figure>
+                            <figure class="fragment">
+                                <img src="./images/rsworms/map-generation/noise/perlin.png" alt="">
+                                <figcaption>Perlin noise</figcaption>
+                            </figure>
+                        </div>
+                    </section>
+                    <section>
+                        <h4>Algorithm</h4>
+                        <div style="display: flex; font-size: 1rem; flex-wrap: wrap; justify-content: center;">
+                            <figure>
+                                <img width="250px" src="./images/rsworms/map-generation/algorithm/mask.png" alt="">
+                                <figcaption>Generate mask</figcaption>
+                            </figure>
+                            <figure>
+                                <img width="250px" src="./images/rsworms/map-generation/algorithm/matrix.png" alt="">
+                                <figcaption>Get matrix from image</figcaption>
+                            </figure>
+                            <figure>
+                                <img width="250px" src="./images/rsworms/map-generation/algorithm/fill.png" alt="">
+                                <figcaption>Fill canvas by map image</figcaption>
+                            </figure>
+                            <figure>
+                                <img width="250px" src="./images/rsworms/map-generation/algorithm/crop.png" alt="">
+                                <figcaption>Crop image by matrix</figcaption>
+                            </figure>
+                            <figure>
+                                <img width="250px" src="./images/rsworms/map-generation/algorithm/grass.png" alt="">
+                                <figcaption>Draw grass</figcaption>
+                            </figure>
+                            <figure>
+                                <img width="250px" src="./images/rsworms/map-generation/algorithm/objects.png" alt="">
+                                <figcaption>Place objects</figcaption>
+                            </figure>
+
+                        </div>
+
+                    </section>
+
+                    <section>
+                        <h4>Draw image</h4>
+                            <div style="display: flex; font-size: 1.4rem; flex-wrap: wrap; justify-content: center;">
+                                <figure>
+                                    <img width="400px" src="./images/canvas/drawImage_1.png" alt="">
+                                    <figcaption>ctx.drawImage(image, <span style="color: red;">x</span>, <span style="color: red;">y</span>)</figcaption>
+                                </figure>
+                                <figure>
+                                    <img width="400px" src="./images/canvas/drawImage_2.png" alt="">
+                                    <figcaption>ctx.drawImage(image, <span style="color: red;">x</span>, <span style="color: red;">y</span>, <span style="color: lightgreen;">width</span>,  <span style="color: lightgreen;">height</span>)</figcaption>
+                                </figure>
+                            </div>
+                    </section>
+                    <section>
+                        <figure>
+                            <img width="400px" src="./images/canvas/drawImage_3.png" alt="">
+                            <figcaption style="font-size: 1.4rem;">ctx.drawImage(image, <span style="color: blue;">iX</span>, <span style="color: blue;">iY</span>, <span style="color: orange;">iWidth</span>,  <span style="color: orange;">iHeight</span>, <span style="color: red;">x</span>, <span style="color: red;">y</span>, <span style="color: lightgreen;">width</span>,  <span style="color: lightgreen;">height</span>)</figcaption>
+                        </figure>
+                    </section>
+
+                    <section>
+                        <h4>Draw circle</h4>
+                            <div style="display: flex; font-size: 1.4rem; flex-wrap: wrap; justify-content: center;">
+                                <figure>
+                                    <img width="500px" src="./images/canvas/arc.png" alt="">
+                                </figure>
+                            </div>
+                    </section>
+
+                    <section>
+                        <h4>Radians</h4>
+                            <div style="display: flex; font-size: 1.4rem; flex-wrap: wrap; justify-content: center;">
+                                <figure>
+                                    <img width="500px" src="./images/canvas/PI.png" alt="">
+                                </figure>
+                            </div>
+                            <div style="font-size: 1.2rem;">
+                                <p> <span style="color: red;">angleRad</span> = angleDeg * (<span style="color: red;">PI</span> / 180)</p>
+                                <p> <span style="color: lightgreen;">angleDeg</span> = angleRad * (<span style="color: lightgreen;">180</span> / PI)</p>
+                            </div>
+                    </section>
+                    <section>
+                        <h4>Animations</h4>
+                    </section>
+                    <section>
+                        <h4>Sprite</h4>
+                        <figure>
+                            <img width="800px" src="./images/canvas/sprite.png" alt="">
+                        </figure>
+                    </section>
+                    <section>
+                        <figure>
+                            <img width="300px" src="./images/canvas/sprite-types.png" alt="">
+                        </figure>
+                    </section>
+
                 </section>
+
+
                 <section>
                     <section>
                         <h2>Useful links</h2>
