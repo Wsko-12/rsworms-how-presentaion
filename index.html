@@ -316,103 +316,37 @@
                         </div>
                     </section>
                     <section>
-                        <h4>Plan</h4>
-                        <ul>
-                            <li>Map generation 
-                                <ul style="font-size: 0.75em;">
-                                    <li>Canvas 2d context API</li>
-                                    <li>Perlin noise</li>
-                                    <li>Linear congruential generator</li>
-                                </ul>
-                            </li>
-                            <li>Animations 
-                                <ul style="font-size: 0.75em;">
-                                    <li>requestAnimationFrame</li>
-                                    <li>FPS</li>
-                                    <li>sprite animations</li>
-                                </ul>
-                            <li>Physics
-                                <ul style="font-size: 0.75em;">
-                                    <li>RSWorms collisions and physics</li>
-                                    <li>Vectors</li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </section>
-                    <section>
-                        <h2>Map generation</h2>
-                    </section>
-                    <section>
-                        <h3>Canvas</h3>
-                        <p style="text-align: left">HTML element for creating graphics with JS</p>
-                        <div class="fragment" style="text-align: left">
-                            <p>Canvas context:</p>
-                            <ul>
-                                <li>2d</li>
-                                <li>webgl</li>
-                                <li>webgl2</li>
-                                <li>bitmaprenderer</li>
-                            </ul>
-                        </div>
-                    </section>
-                    <section>
-                        <h4>Canvas size</h4>
-                        <div style="display: flex;">
-                            <div style="width: 50%; font-size: 0.9rem;">
-                                <figure>
-                                    <img style="width: 50%;" src="./images/rsworms/map-generation/canvas-size/ghost-16.png" alt="">
-                                    <figcaption> 16x16</figcaption>
-                                </figure>
-                                <pre style="font-size: 0.8rem;" data-trim data-noescape>
-                                    <code>
-<canvas width="16" height="16"></canvas>
-                                    </code>
-                                </pre>
-                                <pre style="font-size: 0.8rem;" data-trim data-noescape>
-                                    <code>
-canvas.width = 16;
-canvas.height = 16;
-                                    </code>
-                                </pre>
-                            </div>
-                            <div style="width: 50%; font-size: 1rem;">
-                                <figure>
-                                    <img style="width: 50%;" src="./images/rsworms/map-generation/canvas-size/ghost-big.png" alt="">
-                                    <figcaption> 256x256</figcaption>
-                                </figure>
-                                <pre style="font-size: 0.8rem;" data-trim data-noescape>
-                                    <code>
-<canvas style="width: 256px; height: 256px;"></canvas>
-                                    </code>
-                                </pre>
-                                <pre style="font-size: 0.8rem;" data-trim data-noescape>
-                                    <code>
-canvas.style.width = 16;
-canvas.style.height = 16;
-                                    </code>
-                                </pre>
-                            </div>
-
-                        </div>
-
-                    </section>
-                    <section>
-                        <h4>Draw Rectangle</h4>
-                        <img style="width: 450px;" src="./images/canvas/fillRect.png">
-                        <p>ctx.fillRect(<span style="color:red">x</span>, <span style="color:red">y</span>, <span style="color:lightgreen">width</span>, <span style="color:lightgreen">height</span>)</p>
-                    </section>
-                    <section>
                         <h4>Noise</h4>
                         <div style="display: flex;">
                             <figure>
                                 <img src="./images/rsworms/map-generation/noise/white.png" alt="">
                                 <figcaption>White noise</figcaption>
                             </figure>
-                            <figure class="fragment">
+                            <figure>
                                 <img src="./images/rsworms/map-generation/noise/perlin.png" alt="">
                                 <figcaption>Perlin noise</figcaption>
                             </figure>
                         </div>
+                    </section>
+                    <section>
+                        <code>
+                            perlinNoise(x,y) -> 0 ... 1
+                        </code>
+                    </section>
+                    <section>
+                        <div style="display: flex; justify-content: center;">
+                            <div>
+                                <img width="400px" src="./images/rsworms/map-generation/noise/perlin-noise-all.png" alt="">
+                                <p>0 ... 1</p>
+                            </div>
+                            <div>
+                                <img width="400px" src="./images/rsworms/map-generation/noise/perlin-noise-05.png" alt="">
+                                <p> <=0.5 — 0 ... >0.5 — 1</p>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <img src="./images/rsworms/map-generation/noise/perlin-noise-mixed.png" alt="">
                     </section>
                     <section>
                         <h4>Algorithm</h4>
@@ -441,51 +375,31 @@ canvas.style.height = 16;
                                 <img width="250px" src="./images/rsworms/map-generation/algorithm/objects.png" alt="">
                                 <figcaption>Place objects</figcaption>
                             </figure>
-
                         </div>
-
-                    </section>
-
-                    <section>
-                        <h4>Draw image</h4>
-                            <div style="display: flex; font-size: 1.4rem; flex-wrap: wrap; justify-content: center;">
-                                <figure>
-                                    <img width="400px" src="./images/canvas/drawImage_1.png" alt="">
-                                    <figcaption>ctx.drawImage(image, <span style="color: red;">x</span>, <span style="color: red;">y</span>)</figcaption>
-                                </figure>
-                                <figure>
-                                    <img width="400px" src="./images/canvas/drawImage_2.png" alt="">
-                                    <figcaption>ctx.drawImage(image, <span style="color: red;">x</span>, <span style="color: red;">y</span>, <span style="color: lightgreen;">width</span>,  <span style="color: lightgreen;">height</span>)</figcaption>
-                                </figure>
-                            </div>
                     </section>
                     <section>
-                        <figure>
-                            <img width="400px" src="./images/canvas/drawImage_3.png" alt="">
-                            <figcaption style="font-size: 1.4rem;">ctx.drawImage(image, <span style="color: blue;">iX</span>, <span style="color: blue;">iY</span>, <span style="color: orange;">iWidth</span>,  <span style="color: orange;">iHeight</span>, <span style="color: red;">x</span>, <span style="color: red;">y</span>, <span style="color: lightgreen;">width</span>,  <span style="color: lightgreen;">height</span>)</figcaption>
-                        </figure>
+                        <img width="400px" src="./images/rsworms/map-generation/matrix/map-matrix-image.png" alt="">
+                        <img width="400px" src="./images/rsworms/map-generation/matrix/map-matrix-matrix.png" alt="">
+                        <p>32x32</p>
                     </section>
-
                     <section>
-                        <h4>Draw circle</h4>
-                            <div style="display: flex; font-size: 1.4rem; flex-wrap: wrap; justify-content: center;">
-                                <figure>
-                                    <img width="500px" src="./images/canvas/arc.png" alt="">
-                                </figure>
-                            </div>
+                        <img width="400px" src="./images/rsworms/map-generation/algorithm/grass-draw.png" alt="">             
                     </section>
-
                     <section>
-                        <h4>Radians</h4>
-                            <div style="display: flex; font-size: 1.4rem; flex-wrap: wrap; justify-content: center;">
-                                <figure>
-                                    <img width="500px" src="./images/canvas/PI.png" alt="">
-                                </figure>
+                        <div style="display: flex; justify-content: center;">
+                            <div>
+                                <img width="400px" src="./images/rsworms/map-generation/algorithm/object-find-place.png" alt="">
+                                <p style="font-size: 0.8em;">xRand = 512 * Math.random()</p>
                             </div>
-                            <div style="font-size: 1.2rem;">
-                                <p> <span style="color: red;">angleRad</span> = angleDeg * (<span style="color: red;">PI</span> / 180)</p>
-                                <p> <span style="color: lightgreen;">angleDeg</span> = angleRad * (<span style="color: lightgreen;">180</span> / PI)</p>
+                            <div>
+                                <img width="400px" src="./images/rsworms/map-generation/algorithm/object-place.png" alt="">
                             </div>
+                        </div>
+                    </section>
+                    <section>
+                        <h3><a href="https://en.wikipedia.org/wiki/Linear_congruential_generator" target="_blank">Linear congruential generator</a></h3>
+                        <img src="./images/rsworms/map-generation/algorithm/lcg.png" alt="">
+
                     </section>
                     <section>
                         <h4>Animations</h4>
