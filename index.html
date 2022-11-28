@@ -9,9 +9,7 @@
 		<link rel="stylesheet" href="dist/reset.css">
 		<link rel="stylesheet" href="dist/reveal.css">
 		<link rel="stylesheet" href="dist/theme/black.css">
-
-		<!-- Theme used for syntax highlighted code -->
-		<link rel="stylesheet" href="plugin/highlight/monokai.css">
+        <link rel="stylesheet" href="plugin/highlight/monokai.css">
 		<style>
 			.color-logo{
 				color: #9ee9f8 !important;
@@ -341,7 +339,7 @@
                             </div>
                             <div>
                                 <img width="400px" src="./images/rsworms/map-generation/noise/perlin-noise-05.png" alt="">
-                                <p> <=0.5 — 0 ... >0.5 — 1</p>
+                                <p> ≤0.5 — 0 ... >0.5 — 1</p>
                             </div>
                         </div>
                     </section>
@@ -398,22 +396,165 @@
                     </section>
                     <section>
                         <h3><a href="https://en.wikipedia.org/wiki/Linear_congruential_generator" target="_blank">Linear congruential generator</a></h3>
-                        <img src="./images/rsworms/map-generation/algorithm/lcg.png" alt="">
+                        <pre class="javascript" >
+                            <code style="font-size: 0.7em; overflow: hidden; padding: 10px;">
+class Random{
+    m = 4294967296;
+    a = 1664525;
+    c = 1013904223;
+    constructor(seed) {
+        this.x = seed
+    }
 
+    get(){
+        const {x, m, a, c} = this;
+        this.x = (a * x + c) % m;
+        return this.x;
+    }
+}
+                            </code>
+                        </pre>
+                    </section>
+                    <section>
+                        <img src="./images/rsworms/map-generation/algorithm/lcg.png" alt="">
                     </section>
                     <section>
                         <h4>Animations</h4>
                     </section>
                     <section>
-                        <h4>Sprite</h4>
-                        <figure>
-                            <img width="800px" src="./images/canvas/sprite.png" alt="">
-                        </figure>
+                        <div style="display: flex; justify-content: center">
+                            <div>
+                                <pre class="javascript" >
+                                    <code style="font-size: 0.7em; overflow: hidden; padding: 10px;">
+let timestamp = Date.now();
+let frame = 0;
+const loop = () => {
+    const now = Date.now();
+    console.log(now - timestamp);       
+    timestamp = now;
+    frame++
+    if(frame < 20){
+        setTimeout(loop);
+    }
+}
+loop();
+                                    </code>
+                                </pre>
+                                <p>setTimeout</p>
+                                <p>5-6ms ≈ 160fps</p>
+                            </div>
+                            <div>
+                                <pre class="javascript">
+                                    <code style="font-size: 0.7em; overflow: hidden; padding: 10px;">
+let timestamp = Date.now();
+let frame = 0;
+const loop = () => {
+    const now = Date.now();
+    console.log(now - timestamp);   
+    timestamp = now;
+    frame++;
+    if(frame > 20){
+        clearInterval(timer);
+    }
+}
+const timer = setInterval(loop);
+                                    </code>
+                                </pre>
+                                <p>setInterval</p>
+                                <p>3-5ms ≈ 250fps</p>
+                            </div>
+                            <div>
+                                <pre class="javascript">
+                                    <code style="font-size: 0.7em; overflow: hidden; padding: 10px;">
+let timestamp = Date.now();
+let frame = 0;
+const loop = () => {
+    const now = Date.now();
+    console.log(now - timestamp);       
+    timestamp = now;
+    frame++
+    if(frame < 20){
+        requestAnimationFrame(loop);
+    }
+}
+loop();
+                                    </code>
+                                </pre>
+                                <p>requestAnimationFrame</p>
+                                <p>8-9ms ≈ 120fps</p>
+                            </div>
+                        </div>
                     </section>
                     <section>
-                        <figure>
-                            <img width="300px" src="./images/canvas/sprite-types.png" alt="">
-                        </figure>
+                        <div style="display: flex; justify-content: center;">
+                            <div>
+                                <pre class="javascript">
+                                    <code>
+const loop = () => {
+
+    ** update something ** 
+
+    requestAnimationFrame(loop)                       
+}
+loop();
+
+                                    </code>
+                                </pre>
+                                <p>120fps || 60fps || 30fps</p>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <img src="./images/rsworms/fps.png" alt="">
+                    </section>
+                    <section>
+                        <h4>fixed FPS</h4>
+          
+                                <pre class="javascript" >
+                                    <code style="font-size: 0.75em;">
+class Loop {
+    constructor(fps, callback) {
+        this.oneFrameMs = 1000 / fps;
+        this.callback = callback;
+        this.msCounter = 0;
+    }
+
+    play(delta) {
+        this.msCounter += delta;
+        if(this.msCounter > this.oneFrameMs){
+            this.callback();
+            this.msCounter = this.msCounter % this.oneFrameMs;
+        }
+    }
+}
+
+                                    </code>
+                                </pre>
+                    </section>
+                    <section>
+                        <h4>fixed FPS usage</h4>
+          
+                                <pre class="javascript" >
+                                    <code style="font-size: 0.75em;">
+const updateLoop = new Loop(30, () => {
+    ** update something **
+})
+
+let prevTimestamp = 0;
+const mainLoop = (timestamp = 0) => {
+    const delta = timestamp - prevTimestamp;
+    prevTimestamp = timestamp;
+
+    updateLoop.play(delta);
+    requestAnimationFrame(mainLoop);
+}
+mainLoop()
+
+                                    </code>
+                                </pre>
+                    </section>
+                    <section>
+                        loopFPS <span style="color: red">≤</span> requestAnimationFrameFPS
                     </section>
 
                     <section>
@@ -486,7 +627,7 @@
 		<script src="dist/reveal.js"></script>
 		<script src="plugin/notes/notes.js"></script>
 		<script src="plugin/markdown/markdown.js"></script>
-		<script src="plugin/highlight/highlight.js"></script>
+        <script src="plugin/highlight/highlight.js"></script>
 		<script>
 			// More info about initialization & config:
 			// - https://revealjs.com/initialization/
