@@ -560,6 +560,90 @@ mainLoop()
                     <section>
                         <h4>Physics</h4>
                     </section>
+                    <section>
+                        <h5>collision detection</h5>
+                        <div style="display: flex; justify-content: center">
+                            <div style="font-size: 0.5em;">
+                                <img width="400px" src="./images/rsworms/physics/collision-map.png">
+                                <p>xIndex = Math.floor(x)</p>
+                                <p>yIndex = Math.floor(y)</p>
+                                <p>value = matrix[yIndex][xIndex]</p>
+                            </div>
+                            <div>
+                                <img src="./images/rsworms/physics/collision-matrix.png">
+                            </div>
+                        </div>
+                        
+                    </section>
+                    <section>
+                        <img style="width: 500px;" src="./images/rsworms/physics/circle-points.png">
+                    </section>
+                    <section>
+                        <img style="width: 500px;" src="./images/rsworms/physics/circle-angles.png">
+                    </section>
+                    <section>
+                        <img style="width: 800px;" src="./images/rsworms/physics/point-on-circle.png">
+                    </section>
+
+                    <section>
+                        <div style="display: flex; justify-content: center">
+                            <div style="font-size: 0.5em;">
+                                <img width="300px" src="./images/rsworms/physics/circle-around-loop.png">
+                            </div>
+                            <div>
+                                <pre style="width: 500px;" class="javascript" >
+                                    <code style="font-size: 0.58em;">
+const step = Math.PI / 4;
+for(let angle = 0; angle < Math.PI * 2; angle += step){
+    const pX = Math.cos(angle) * radius + x;
+    const pY = Math.sin(angle) * radius + y;
+                                                                
+    const pXIndex = Math.floor(pX);
+    const pYIndex = Math.floor(pY);
+                        
+    if(matrix[pYIndex] && matrix[pYIndex][pXIndex]){
+        return true;
+    }
+}
+
+                                    </code>
+                                </pre>
+                            </div>
+                        </div>
+                        
+                    </section>
+                    <section>
+                        <h3>rebound</h3>
+                    </section>
+
+                    <section>
+                        <img width="700px" src="./images/rsworms/physics/rebounce-1.png">
+                    </section>
+                    <section>
+                        <img width="700px" src="./images/rsworms/physics/rebounce-2.png">
+                    </section>
+                    <section>
+                        <img width="700px" src="./images/rsworms/physics/rebounce-3.png">
+                    </section>
+                    <section>
+                        <img width="700px" src="./images/rsworms/physics/rebounce-4.png">
+                    </section>
+                    <section>
+                        <img width="700px" src="./images/rsworms/physics/surface-normale-question.png">
+                    </section>
+                    <section>
+                        <img width="700px" src="./images/rsworms/physics/vectors-to-points.png">
+                    </section>
+                    <section>
+                        <img width="700px" src="./images/rsworms/physics/vectors-sum.png">
+                    </section>
+                    <section>
+                        <img width="700px" src="./images/rsworms/physics/vector-reflected.png">
+                    </section>
+                    <section>
+                        <img width="700px" src="./images/rsworms/physics/new-vector.png">
+                    </section>
+
 
                 </section>
 
