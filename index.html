@@ -320,7 +320,7 @@
                                 <img src="./images/rsworms/map-generation/noise/white.png" alt="">
                                 <figcaption>White noise</figcaption>
                             </figure>
-                            <figure>
+                            <figure class="fragment">
                                 <img src="./images/rsworms/map-generation/noise/perlin.png" alt="">
                                 <figcaption>Perlin noise</figcaption>
                             </figure>
@@ -614,6 +614,36 @@ for(let angle = 0; angle < Math.PI * 2; angle += step){
                     </section>
                     <section>
                         <h3>rebound</h3>
+                    </section>
+                    <section>
+                        <pre class="javascript" >
+                            <code style="font-size: 0.75em;">
+class Entity{
+    constructor(){
+        this.position = {
+            x: 0,
+            y: 0,
+        }
+
+        this.velocity: {
+            x: 0,
+            y: 0
+        }
+    }
+
+    update(){
+        this.position.x += this.velocity.x;
+        this.position.y += this.velocity.y;
+    }
+
+    push(x, y){
+        this.velocity.x += x;
+        this.velocity.y += y;
+    }
+}
+
+                            </code>
+                        </pre>
                     </section>
 
                     <section>
